@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.11.8",
+    "mongose": "0.0.2-security"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
