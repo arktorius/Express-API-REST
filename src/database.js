@@ -1,8 +1,9 @@
 import mongoose from 'mongoose'
+import configDB from './config'
 
 
 (async ()=>{
-    const db1 = await mongoose.connect('mongodb://localhost/tesM1',{
+    const db1 = await mongoose.connect(configDB.dbURL,{
         useNewUrlParser: true,
         useUnifiedTopology: true  
     }
