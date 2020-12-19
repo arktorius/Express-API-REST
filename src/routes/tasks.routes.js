@@ -1,28 +1,20 @@
 import express from "express";
-import {Router} from 'express'
-import model from '../models/UserModel'
+import { Router } from 'express'
+
+import *as userController from '../controllers/ControllerUser'
 
 const router = Router();
 
 
-router.get('/User', (req,res)=>{
-    res.json('adsasdasdasd')
-})
+router.get('/User', userController.allUsers);
 
-router.post('/User',async (req, res)=>{
-    console.log(req.body);
-    const newUser = new model({
-        UserName: req.body.UserName,
-        UserFullName: req.body.UserFullName,
-        UserPassword:req.body.UserPassword,
-        UserIsAviable: req.body.UserIsAviable
-         
-    });
-    await newUser.save();
-    console.log(newUser);
-    res.json('ok');
+router.get('/User/:id', userController.findOneUsers);
 
-})
+router.post('/User', userController.createUser);
+
+router.delete('/User/:id', userController.delUser);
+
+router.put('/User/:id', userController.updateUser);
 
 
 export default router
