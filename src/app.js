@@ -1,5 +1,5 @@
 import express from 'express'
-import router from './routes/tasks.routes'
+import router from './routes/user.routes'
 import morgan from 'morgan'
 import cors from 'cors'
 
