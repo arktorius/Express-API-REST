@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose'
+import mongoosePaginate from 'mongoose-paginate-v2'
 
 
 const UserForm = new Schema({
@@ -25,6 +26,6 @@ const UserForm = new Schema({
     versionKey: false,
     timestamps: true
 });
-
+UserForm.plugin(mongoosePaginate);
 export default model('UserForm', UserForm);
 

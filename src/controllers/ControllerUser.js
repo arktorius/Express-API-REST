@@ -1,8 +1,16 @@
 import model from '../models/UserModel'
+import { getPagination } from '../libs/getPagination'
 
 export const allUsers = async (req, res) => {
-    const allUsers = await model.find();
+
+    const { size, page, UserName } = req.query;
+    const search = UserName ?
+        { UserName: { $regex: new RegExp(UserName), $options: "i" } } : {};
+
+    const { limit, offset } = getPagination(page, size);
+    const allUsers = await model.paginate(search, { offset, limit });
     res.json(allUsers);
+    console.log(req.query);
 }
 
 export const findOneUsers = async (req, res) => {
